@@ -13,6 +13,7 @@ import org.apache.commons.logging.Log;
 import de.wadokukeizai.app.android.libs.AndroidLog;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,7 +25,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class WDKDBHelper extends SQLiteOpenHelper {
 
   private Log log;
-  private static String DB_PATH = "/data/data/de.wadokukeizai.app.android/databases";
+  private static String DB_PATH =
+      "/data/data/de.wadokukeizai.app.android/databases";
   private static String DB_NAME_ASSET = "wdk.db";
   private static String DB_NAME = "dictionary";
   static final int DB_VERSION = 1;
@@ -46,7 +48,6 @@ public class WDKDBHelper extends SQLiteOpenHelper {
   public void setLog(Log log) {
     this.log = log;
   }
-
 
   /**
    * assetに格納したデータベースをコピーするための空データベース作成 referenced here:
@@ -94,8 +95,11 @@ public class WDKDBHelper extends SQLiteOpenHelper {
 
     try {
       String dbPath = DB_PATH + DB_NAME;
-      checkDb = SQLiteDatabase.openDatabase(dbPath, null,
-          SQLiteDatabase.OPEN_READONLY);
+      checkDb =
+          SQLiteDatabase.openDatabase(
+              dbPath,
+              null,
+              SQLiteDatabase.OPEN_READONLY);
     } catch (SQLException e) {
       // データベースなし
     }
@@ -109,8 +113,8 @@ public class WDKDBHelper extends SQLiteOpenHelper {
   public SQLiteDatabase openDatabase() throws SQLException {
     String path = DB_PATH + DB_NAME;
     log.info(path);
-    mDataBase = SQLiteDatabase.openDatabase(path, null,
-        SQLiteDatabase.OPEN_READONLY);
+    mDataBase =
+        SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
     return mDataBase;
   }
 
@@ -136,9 +140,9 @@ public class WDKDBHelper extends SQLiteOpenHelper {
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     /*
-    db.execSQL("create table products(" + "  name text not null,"
-        + "  price text" + ");");
-        */
+     * db.execSQL("create table products(" + "  name text not null," +
+     * "  price text" + ");");
+     */
   }
 
 }

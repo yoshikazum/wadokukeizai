@@ -117,7 +117,8 @@ public class DictionaryLoader {
       BufferedOutputStream dest = null;
       FileInputStream fis = new FileInputStream(fileInputStreamName);
       CheckedInputStream checksum = new CheckedInputStream(fis, new Adler32());
-      ZipInputStream zis = new ZipInputStream(new BufferedInputStream(checksum));
+      ZipInputStream zis =
+          new ZipInputStream(new BufferedInputStream(checksum));
       ZipEntry entry;
 
       while ((entry = zis.getNextEntry()) != null) {
@@ -132,7 +133,7 @@ public class DictionaryLoader {
         }
         dest.flush();
         dest.close();
-        
+
       }
       zis.close();
       log.info("Checksum: " + checksum.getChecksum().getValue());
