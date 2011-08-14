@@ -16,6 +16,10 @@ import java.util.zip.CheckedInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.GetMethod;
+
 public class DictionaryLoader {
   org.apache.commons.logging.Log log;
 
@@ -141,6 +145,51 @@ public class DictionaryLoader {
       e.printStackTrace();
       return false;
     }
+    return true;
+  }
+
+  /**
+   * HttpClientを使ってGETリクエスト referenced here:
+   * http://www.syboos.jp/java/doc/jakarta-commons-httpclient.html
+   * http://hc.apache.org/httpcomponents-client-ga/tutorial/html/index.html
+   * 
+   * @param url
+   */
+  public void httpGet(String url) {
+    HttpClient httpClient = new HttpClient();
+    GetMethod httpget = new GetMethod(url);
+    try {
+      int statusCode = httpClient.executeMethod(httpget);
+      log.info(httpget.getStatusLine());
+
+      if (statusCode != HttpStatus.SC_OK) {
+        log.error("failed: " + httpget.getStatusLine());
+      }
+
+      byte[] responseBody = httpget.getResponseBody();
+      log.info(new String(responseBody));
+
+      write(responseBody);
+    } catch (Exception e) {
+      log.error(e.toString());
+    } finally {
+      httpget.releaseConnection();
+    }
+  }
+
+  private boolean write(byte b[]) throws IOException {
+    FileOutputStream fos = null;
+    File file;
+    try {
+      file = new File("wdk.zip");
+      fos = new FileOutputStream(file);
+      fos.write(b);
+    } catch (IOException e) {
+      throw new IOException("failed to write file :" + e.toString());
+    } finally {
+      fos.close();
+    }
+    log.info("success to write file: " + file.getAbsolutePath());
     return true;
   }
 }

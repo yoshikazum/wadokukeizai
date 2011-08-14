@@ -43,5 +43,13 @@ public class DictionaryLoaderTest extends TestCase {
     boolean result = loader.unzip("WDK.zip");
     assertTrue(result);
   }
+  
+  @Test
+  public void testHttpGet(){
+    String url = new String(
+          "http://d.hatena.ne.jp/Yoshikazu/files/WDK.zip?d=download"
+        );
+    loader.httpGet(url);
+  }
 
 }
