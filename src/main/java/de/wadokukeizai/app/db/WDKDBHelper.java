@@ -1,5 +1,7 @@
 /**
- * 
+ * Wadoku Keizai Android Application
+ * Copyright (C) 2011 WadokuKeizai All Rights Reserved.
+ * http://www.wadokukeizai.de/
  */
 package de.wadokukeizai.app.db;
 

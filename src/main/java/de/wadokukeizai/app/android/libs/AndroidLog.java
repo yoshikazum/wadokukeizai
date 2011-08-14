@@ -1,7 +1,15 @@
+/**
+ * Wadoku Keizai Android Application
+ * Copyright (C) 2011 WadokuKeizai All Rights Reserved.
+ * http://www.wadokukeizai.de/
+ */
 package de.wadokukeizai.app.android.libs;
 
 import org.apache.commons.logging.Log;
-
+/**
+ * @author "Yoshikazu Miyoshi <yoshikazum@gmail.com>"
+ *
+ */
 public class AndroidLog implements Log {
 
   private String tag;

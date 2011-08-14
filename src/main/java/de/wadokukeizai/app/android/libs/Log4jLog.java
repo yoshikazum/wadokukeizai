@@ -1,10 +1,18 @@
+/**
+ * Wadoku Keizai Android Application
+ * Copyright (C) 2011 WadokuKeizai All Rights Reserved.
+ * http://www.wadokukeizai.de/
+ */
 package de.wadokukeizai.app.android.libs;
 
 import org.apache.commons.logging.Log;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
+/**
+ * @author "Yoshikazu Miyoshi <yoshikazum@gmail.com>"
+ *
+ */
 public class Log4jLog implements Log {
 
   private Logger log;

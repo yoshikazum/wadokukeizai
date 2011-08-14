@@ -1,3 +1,8 @@
+/**
+ * Wadoku Keizai Android Application
+ * Copyright (C) 2011 WadokuKeizai All Rights Reserved.
+ * http://www.wadokukeizai.de/
+ */
 package de.wadokukeizai.app.android.libs;
 
 import java.io.BufferedInputStream;
@@ -19,7 +24,10 @@ import java.util.zip.ZipInputStream;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
-
+/**
+ * @author "Yoshikazu Miyoshi <yoshikazum@gmail.com>"
+ *
+ */
 public class DictionaryLoader {
   org.apache.commons.logging.Log log;
 
